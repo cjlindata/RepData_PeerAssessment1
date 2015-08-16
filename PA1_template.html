@@ -238,8 +238,8 @@ dim(activityDf)
 
 <h2>What is mean total number of steps taken per day?</h2>
 
-<p>I group dataset by day (dataset variable:dates) to generate a new dataset (by_date)<br/>
-I summarise the total number of steps taken by date and generated new dataset (stepsDate)  </p>
+<p>I grouped dataset by day (dataset variable:dates) to generate a new dataset (by_date)<br/>
+I summarised the total number of steps taken by date and generated new dataset (stepsDate)  </p>
 
 <ul>
 <li>The variables included in the dataset are:<br/>
@@ -274,7 +274,7 @@ head(stepsDate)
 med &lt;- median(stepsDate$total,na.rm=TRUE)
 </code></pre>
 
-<p>We generated a histogram plot (Histogram A) to show the visualize distribution of the total number of steps taken per day of the data set  </p>
+<p>I generated a histogram plot (Histogram A) to show the visualize distribution of the total number of steps taken per day of the data set  </p>
 
 <ul>
 <li>The mean and median values are displayed in the title.<br/>
@@ -296,8 +296,8 @@ abline(v = mean(stepsDate$total), col = &quot;red&quot;, lwd = 1)
 
 <h2>What is the average daily activity pattern?</h2>
 
-<p>I group dataset by interval (dataset variable:interval) to generate a new dataset (by_interval)<br/>
-I summarise the total number of steps taken by date and generated new dataset (stepsInt)</p>
+<p>I grouped dataset by interval (dataset variable:interval) to generate a new dataset (by_interval)<br/>
+I summarised the total number of steps taken by date and generated new dataset (stepsInt)</p>
 
 <ul>
 <li>The variables included in the dataset are:<br/>
@@ -309,7 +309,7 @@ It marks the 24 hours by 5-interval identifier. (from 0 = 12 am to 2355 = 11:55 
 </ul></li>
 </ul>
 
-<p>It is difficult to pinpoint which interval has the maximum number of average number of steps taken by graph so I show it at title.  </p>
+<p>It is difficult to pinpoint which interval has the maximum number of average number of steps taken by graph so I show it at graph title.  </p>
 
 <pre><code class="r">## Group by interval
 by_interval &lt;- group_by(activityDf,interval) 
@@ -350,7 +350,8 @@ colSums(is.na(activityDf))
 ##     2304        0        0
 </code></pre>
 
-<p>I cloned a new dataset (actNewDF) from activity dataset. My strategy for filling in all missing data in steps column with the mean of average steps taken for that 5-minute internval (function getIntMean) using data in stepsInt data set. </p>
+<p>I cloned a new dataset (actNewDF) from activity dataset.<br/>
+My strategy for filling in all missing data in steps column is replace them with the mean of average steps taken for that 5-minute internval (function getIntMean) using data in stepsInt data set. </p>
 
 <pre><code class="r">## create new dataframe: actNewDf
 actNewDf &lt;- data.frame(steps =activityDf$steps,date = activityDf$date,interval = activityDf$interval)
@@ -367,7 +368,7 @@ for(i in 1:length(actNewDf$steps)){
 </code></pre>
 
 <p>Repeat section &ldquo;What is mean total number of steps taken per day&rdquo; procedure to generate histogram with mean and median information.<br/>
-We generated a histogram plot (Histogram B) to show the visualize distribution of the total number of steps taken per day of the data set  </p>
+I generated a histogram plot (Histogram B) to show the visualize distribution of the total number of steps taken per day of the data set  </p>
 
 <ul>
 <li>The mean and median values are displayed in the title.<br/>
@@ -378,7 +379,7 @@ We generated a histogram plot (Histogram B) to show the visualize distribution o
 </ul></li>
 </ul>
 
-<p>The visualize distribution of two historgrams Histogram A (ignore missing data), Historgram B ( imputing missing data) are almost identical.   </p>
+<p>The visualize distribution of two historgrams Histogram A (ignore missing data), Historgram B (imputing missing data) are almost identical.   </p>
 
 <ul>
 <li>There are two impacts for imputing missing value.<br/>
@@ -407,7 +408,8 @@ abline(v = mean(stepsNewDate$total), col = &quot;red&quot;, lwd = 1)
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 
-<p>I generated two the time series plots one for weekday activity and one for weekend. It is more active in the morning during weekday and more average distributed during daytime in the weekend.</p>
+<p>I generated two the time series plots one for weekday activity and one for weekend.<br/>
+It is more active in the morning during weekday and the activity pattern is evenly distributed during daytime for the weekend.</p>
 
 <pre><code class="r">## Create weekend variable
 wkend &lt;- c(&quot;Saturday&quot;,&quot;Sunday&quot;)

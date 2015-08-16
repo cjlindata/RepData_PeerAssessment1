@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
 output: 
-  html_document:
+  html_document:PA1_template.html
     keep_md: true
 ---
 
@@ -40,8 +40,8 @@ head(activityDf)
 ## 6    NA 2012-10-01       25
 ```
 ## What is mean total number of steps taken per day?
-I group dataset by day (dataset variable:dates) to generate a new dataset (by_date)  
-I summarise the total number of steps taken by date and generated new dataset (stepsDate)  
+I grouped dataset by day (dataset variable:dates) to generate a new dataset (by_date)  
+I summarised the total number of steps taken by date and generated new dataset (stepsDate)  
 
  * The variables included in the dataset are:  
     + date: The date on which the measurement was taken in YYYY-MM-DD format  
@@ -74,7 +74,7 @@ head(stepsDate)
 m <- mean(stepsDate$total,na.rm=TRUE)
 med <- median(stepsDate$total,na.rm=TRUE)
 ```
-We generated a histogram plot (Histogram A) to show the visualize distribution of the total number of steps taken per day of the data set  
+I generated a histogram plot (Histogram A) to show the visualize distribution of the total number of steps taken per day of the data set  
 
  * The mean and median values are displayed in the title.    
     + Red line: The mean of the total number of steps taken per day
@@ -92,15 +92,15 @@ abline(v = mean(stepsDate$total), col = "red", lwd = 1)
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 ## What is the average daily activity pattern?
-I group dataset by interval (dataset variable:interval) to generate a new dataset (by_interval)  
-I summarise the total number of steps taken by date and generated new dataset (stepsInt)
+I grouped dataset by interval (dataset variable:interval) to generate a new dataset (by_interval)  
+I summarised the total number of steps taken by date and generated new dataset (stepsInt)
 
  * The variables included in the dataset are:   
     + interval: identifier for the 5-minute interval in which measurement was taken   
 It marks the 24 hours by 5-interval identifier. (from 0 = 12 am to 2355 = 11:55 pm )  
     + mean: The average number of steps taken, averaged across all days at that interval identifier.   
 
-It is difficult to pinpoint which interval has the maximum number of average number of steps taken by graph so I show it at title.  
+It is difficult to pinpoint which interval has the maximum number of average number of steps taken by graph so I show it at graph title.  
 
 
 ```r
@@ -145,7 +145,8 @@ colSums(is.na(activityDf))
 ##    steps     date interval 
 ##     2304        0        0
 ```
-I cloned a new dataset (actNewDF) from activity dataset. My strategy for filling in all missing data in steps column with the mean of average steps taken for that 5-minute internval (function getIntMean) using data in stepsInt data set. 
+I cloned a new dataset (actNewDF) from activity dataset.  
+My strategy for filling in all missing data in steps column is replace them with the mean of average steps taken for that 5-minute internval (function getIntMean) using data in stepsInt data set. 
 
 
 ```r
@@ -164,13 +165,13 @@ for(i in 1:length(actNewDf$steps)){
 ```
 
 Repeat section "What is mean total number of steps taken per day" procedure to generate histogram with mean and median information.   
-We generated a histogram plot (Histogram B) to show the visualize distribution of the total number of steps taken per day of the data set  
+I generated a histogram plot (Histogram B) to show the visualize distribution of the total number of steps taken per day of the data set  
 
  * The mean and median values are displayed in the title.    
     + Red line: The mean of the total number of steps taken per day
     + Blue line: The median of the total number of steps taken per day
 
-The visualize distribution of two historgrams Histogram A (ignore missing data), Historgram B ( imputing missing data) are almost identical.   
+The visualize distribution of two historgrams Histogram A (ignore missing data), Historgram B (imputing missing data) are almost identical.   
 
  * There are two impacts for imputing missing value.  
     + The value of mean and median are the same for imputing missing dataset.  
@@ -196,7 +197,8 @@ abline(v = mean(stepsNewDate$total), col = "red", lwd = 1)
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-I generated two the time series plots one for weekday activity and one for weekend. It is more active in the morning during weekday and more average distributed during daytime in the weekend.
+I generated two the time series plots one for weekday activity and one for weekend.  
+It is more active in the morning during weekday and the activity pattern is evenly distributed during daytime for the weekend.
 
 
 ```r
