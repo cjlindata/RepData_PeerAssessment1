@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:PA1_template.html
-    keep_md: true
----
+
 ```{r include=FALSE,echo=FALSE,results="hide"}
 library(dplyr)
 library(ggplot2)
